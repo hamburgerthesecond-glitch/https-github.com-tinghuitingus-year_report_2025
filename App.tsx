@@ -29,27 +29,27 @@ const Mascot = ({
   const [hasError, setHasError] = useState(false);
 
   // If runtime load failed
-  if (hasError) {
+    if (hasError) {
       return (
         <div className={`pointer-events-none z-20 ${className}`}>
-             <div 
-                className="relative pointer-events-auto flex flex-col items-center justify-center bg-neutral-900/80 border-2 border-dashed border-neutral-600 text-neutral-400 text-[10px] font-mono p-2 rounded-xl text-center backdrop-blur-sm hover:border-blue-500 hover:text-blue-400 transition-colors"
-                style={{ width: '120px', height: '120px', animation: `float ${6 + delay}s ease-in-out infinite`, animationDelay: `${delay}s` }}
-             >
-                <ImagePlus className="w-6 h-6 mb-2 opacity-50" />
-                <span>Missing<br/><span className="text-white font-bold">{alt}</span></span>
-             </div>
+           <div 
+             className="relative pointer-events-auto flex flex-col items-center justify-center bg-neutral-900/80 border-2 border-dashed border-neutral-600 text-neutral-400 text-[10px] font-mono p-2 rounded-xl text-center backdrop-blur-sm hover:border-blue-500 hover:text-blue-400 transition-colors mascot-fallback"
+             data-delay={delay}
+           >
+             <ImagePlus className="w-6 h-6 mb-2 opacity-50" />
+             <span>Missing<br/><span className="text-white font-bold">{alt}</span></span>
+           </div>
         </div>
       )
-  }
+    }
 
   return (
     <div className={`pointer-events-none z-20 ${className}`}>
       <div 
-        className="relative pointer-events-auto cursor-help group"
+        className="relative pointer-events-auto cursor-help group mascot-anim"
+        data-delay={delay}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        style={{ animation: `float ${6 + delay}s ease-in-out infinite`, animationDelay: `${delay}s` }}
       >
          {/* Speech Bubble */}
          {quote && (
@@ -99,13 +99,10 @@ function App() {
 
       {/* Hero Section */}
       <Section id="hero" className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-black to-black">
-        {/* Mascot: Hero (Standing/Waving) */}
-        <Mascot 
-          src="shark-1.png" 
-          alt="shark-1.png" 
-          className="absolute right-4 bottom-24 md:right-20 md:bottom-20 w-40 md:w-64"
-          quote={lang === 'zh' ? "大家好，我是李婷慧的AI助手！" : "Hi there! I'm your AI assistant!"}
-        />
+
+  {/* Mascot */}
+  <img src="images/1.jpg" alt="mascot-1" className="mascot-img animate-float float-delay-1" />
+
 
         <div className="space-y-8 text-center md:text-left relative z-10">
           <div className="animate-on-scroll">
@@ -144,6 +141,9 @@ function App() {
 
       {/* Timeline Section */}
       <Section id="timeline">
+
+          {/* Mascot */}
+          <img src="images/2.jpg" alt="mascot-2" className="mascot-img animate-float-x float-delay-2" />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 h-full items-center relative">
           <div className="lg:col-span-2 space-y-8 relative z-10">
             <h2 className="animate-on-scroll text-4xl font-bold text-white mb-12 flex items-center gap-4">
@@ -163,14 +163,7 @@ function App() {
           </div>
           
           <div className="animate-on-scroll delay-300 glass-panel p-10 rounded-2xl border-t-4 border-t-red-600 flex flex-col justify-center h-fit relative">
-            {/* Mascot: Timeline (Floating/Curious) */}
-            <Mascot 
-              src="./shark-2.png" 
-              alt="shark-2.png" 
-              className="absolute -top-16 -right-10 w-32 z-30 hidden md:block"
-              quote={lang === 'zh' ? "一步一个脚印！" : "Step by step!"}
-              delay={1}
-            />
+
             
             <div className="w-20 h-20 bg-red-600/10 rounded-full flex items-center justify-center mb-8 mx-auto ring-1 ring-red-600/30">
               <Target className="text-red-500 w-10 h-10" />
@@ -191,6 +184,9 @@ function App() {
 
       {/* Internship Cards */}
       <Section id="internship">
+
+          {/* Mascot */}
+          <img src="images/3.jpg" alt="mascot-3" className="mascot-img animate-float float-delay-3" />
         <div className="w-full relative">
           <h2 className="animate-on-scroll text-4xl font-bold mb-16 flex items-center gap-4">
             <span className="w-2 h-10 bg-blue-600"></span>
@@ -237,6 +233,9 @@ function App() {
 
       {/* Project 1: Yijiandian */}
       <Section id="project-1">
+
+          {/* Mascot */}
+          <img src="images/1.jpg" alt="mascot-1" className="mascot-img animate-float-x float-delay-1" />
         <div className="w-full relative">
           <div className="mb-16 text-center md:text-left animate-on-scroll">
             <h2 className="text-4xl font-bold mb-2">{CONTENT.project1.title[lang]}</h2>
@@ -262,14 +261,7 @@ function App() {
 
             {/* Mock Dashboard Area */}
             <div className="animate-on-scroll delay-200 glass-panel p-8 rounded-xl border-l-2 border-l-transparent hover:border-l-blue-600 bg-black/40 relative">
-               {/* Mascot: Dashboard (Sitting/Standing on Chart) */}
-               <Mascot 
-                  src="./shark-3.png" 
-                  alt="shark-3.png" 
-                  className="absolute -top-12 -right-8 w-28 z-20"
-                  quote={lang === 'zh' ? "数据驱动效率！" : "Data drives efficiency!"}
-                  delay={2}
-               />
+
                
                <div className="flex items-center justify-between mb-8">
                   <h3 className="font-bold flex items-center gap-3 text-lg">
@@ -316,6 +308,9 @@ function App() {
 
       {/* Project 2: New Media & Stability */}
       <Section id="project-2">
+
+          {/* Mascot */}
+          <img src="images/2.jpg" alt="mascot-2" className="mascot-img animate-float float-delay-2" />
          <div className="w-full">
            <div className="mb-16 animate-on-scroll">
              <h2 className="text-4xl font-bold">{CONTENT.project2.title[lang]}</h2>
@@ -375,6 +370,9 @@ function App() {
 
       {/* Support (Insights) & Skills */}
       <Section id="support-skills">
+
+          {/* Mascot */}
+          <img src="images/3.jpg" alt="mascot-3" className="mascot-img animate-float-x float-delay-3" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full">
           {/* Insights Column */}
           <div className="space-y-8 animate-on-scroll">
@@ -430,6 +428,9 @@ function App() {
 
       {/* Yixin Project & MCP */}
       <Section id="yixin-mcp">
+
+          {/* Mascot */}
+          <img src="images/1.jpg" alt="mascot-1" className="mascot-img animate-float float-delay-1" />
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full h-full relative">
             {/* Left: Yixin */}
             <div className="animate-on-scroll glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-4 border-t-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.1)] transition-shadow">
@@ -463,14 +464,7 @@ function App() {
 
             {/* Right: MCP */}
             <div className="animate-on-scroll delay-200 glass-panel p-8 rounded-2xl flex flex-col justify-between border-t-4 border-t-blue-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-shadow relative">
-               {/* Mascot: MCP (Celebrating/Happy) */}
-               <Mascot 
-                  src="./shark-4.png" 
-                  alt="shark-4.png" 
-                  className="absolute -bottom-10 -left-10 w-36 z-30 hidden md:block"
-                  quote={lang === 'zh' ? "突破60万！" : "600k Breakthrough!"}
-                  delay={0.5}
-               />
+
 
                <div>
                   <h2 className="text-2xl font-bold mb-2 flex justify-between items-center">
@@ -505,6 +499,9 @@ function App() {
 
       {/* Achievements */}
       <Section id="achievements">
+
+          {/* Mascot */}
+          <img src="images/2.jpg" alt="mascot-2" className="mascot-img animate-float-x float-delay-2" />
         <div className="text-center mb-20 animate-on-scroll">
           <h2 className="text-5xl font-bold mb-6">{CONTENT.achievements.title[lang]}</h2>
           <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
@@ -538,14 +535,10 @@ function App() {
 
       {/* Future */}
       <Section id="future" className="bg-black relative">
-         {/* Mascot: Future (Flying) */}
-         <Mascot 
-            src="./shark-5.png" 
-            alt="shark-5.png" 
-            className="absolute top-0 right-10 w-40 z-20"
-            quote={lang === 'zh' ? "飞向未来！" : "To the future!"}
-            delay={3}
-         />
+
+  {/* Mascot */}
+  <img src="images/3.jpg" alt="mascot-3" className="mascot-img animate-float float-delay-3" />
+
 
          <div className="max-w-6xl mx-auto w-full">
             <h2 className="animate-on-scroll text-4xl font-bold mb-16 text-center">{CONTENT.future.title[lang]}</h2>
